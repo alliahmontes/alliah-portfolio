@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Alliah Tricia Montes</title>
+<meta name="description" content="Alliah Tricia Montes, Computer Science student at FEU Tech specializing in Software Engineering.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..900&family=IBM+Plex+Mono&display=swap">
+<style>
+/* Layout: one 1120px column. Huge expanded-caps hero, terminal status card, case study with
+   screenshot stack, toolkit rows, a credentials bento, and education as a git log. */
+:root{
+  --bg:#F2F3EE; --surface:#FFFFFF; --ink:#15171C; --muted:#5B616C; --line:#D7DAD1;
+  --accent:#2B37D9; --hi:#D4F05C; --on-hi:#15171C; --term:#15171C; --term-ink:#E9EBE4; --term-dim:#8C929C; --tint-a:#E3E5FB; --tint-b:#EDF6CC; --pink:#E0457B; --tint-p:#FBE3EC;
+  --display:"Archivo", "Arial Narrow", system-ui, sans-serif;
+  --body:"Archivo", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  --max:1120px;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root{
+  --bg:#101114; --surface:#17191E; --ink:#ECEDE8; --muted:#9AA0AA; --line:#2A2D34;
+  --accent:#8F98FF; --hi:#D4F05C; --on-hi:#15171C; --term:#0A0B0D; --term-ink:#E9EBE4; --term-dim:#8C929C; --tint-a:#1D2042; --tint-b:#252B13; --pink:#FF7EAB; --tint-p:#3A1B27; color-scheme:dark}}
+
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+img{max-width:100%}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;font-variation-settings:"wdth" 100;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+::selection{background:var(--pink);color:#15171C}
+:focus-visible{outline:2px solid var(--pink);outline-offset:3px;border-radius:4px}
+.wrap{max-width:var(--max);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.label{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;line-height:1}
+p{margin:0}
+
+/* nav */
+nav{position:sticky;top:0;z-index:5;padding-top:env(safe-area-inset-top,0px);background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.brand{font-family:var(--display);font-weight:800;font-variation-settings:"wdth" 120;text-transform:uppercase;letter-spacing:.01em;text-decoration:none;font-size:16px}
+.brand span{color:var(--pink)}
+nav ul{list-style:none;display:flex;gap:22px;margin:0;padding:0;font-family:var(--mono);font-size:13px}
+nav ul a{text-decoration:none;color:var(--muted)}
+nav ul a:hover{color:var(--ink)}
+@media (max-width:640px){nav ul li:not(.keep){display:none}}
+
+/* hero */
+.hero{padding-block:72px 40px;display:grid;gap:40px}
+.hero h1{font-weight:850;font-variation-settings:"wdth" 125;text-transform:uppercase;font-size:clamp(52px,12.5vw,164px);letter-spacing:-.02em;line-height:.88}
+.hero h1 .line{display:block;overflow:hidden;position:relative;padding-bottom:.14em;margin-bottom:-.14em}
+.hero h1 .line:first-child{z-index:1} /* keeps the comma tail above the highlight below it */
+.hero h1 .line > span{display:inline-block;animation:rise .9s cubic-bezier(.2,.8,.2,1) both}
+.hero h1 .line:nth-child(2) > span{animation-delay:.08s}
+.hero h1 mark{display:inline-block;line-height:.8;background:var(--hi);color:var(--on-hi);padding:.06em .08em .02em;border-radius:.06em} /* box hugs the caps instead of the font's descender space */
+@keyframes rise{from{transform:translateY(40%)}to{transform:none}}
+.hero-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:start}
+.hero-grid > *{min-width:0}
+.intro{font-size:clamp(18px,2vw,21px);line-height:1.55;max-width:56ch}
+.intro strong{font-weight:600}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:14px;padding:12px 18px;border-radius:999px;border:1px solid var(--ink);background:transparent;color:var(--ink);text-decoration:none;cursor:pointer}
+.btn.primary{background:var(--ink);color:var(--bg)}
+.btn:hover{transform:translateY(-1px)}
+.term{background:var(--term);color:var(--term-ink);border-radius:14px;padding:20px 22px;font-family:var(--mono);font-size:13.5px;line-height:1.75}
+.term .dots{display:flex;gap:6px;margin-bottom:14px}
+.term .dots i{width:10px;height:10px;border-radius:50%;background:var(--term-dim);opacity:.5}
+.term .p{color:var(--term-dim)}
+.term .k{color:var(--pink)}
+.term .cursor{display:inline-block;width:8px;height:15px;background:var(--hi);vertical-align:-2px;animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* role strip */
+.strip{border-block:1px solid var(--line);overflow:hidden;white-space:nowrap;padding-block:14px}
+.strip .track{display:inline-flex;gap:28px;animation:slide 38s linear infinite;font-family:var(--display);font-variation-settings:"wdth" 112;font-weight:700;text-transform:uppercase;font-size:22px;letter-spacing:.01em}
+.strip .track span::after{content:"/";margin-left:28px;color:var(--pink)}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* sections */
+section{padding-block:88px 0}
+.sec-head{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:36px}
+.sec-head h2{font-weight:800;font-variation-settings:"wdth" 118;text-transform:uppercase;font-size:clamp(34px,5.5vw,64px);letter-spacing:-.01em}
+
+/* project */
+.project{display:grid;gap:36px;padding-block:40px;border-top:1px solid var(--line)}
+.project > *,.p-text > *{min-width:0}
+.p-text{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.project .meta{display:flex;gap:14px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.pill{font-family:var(--mono);font-size:12px;padding:4px 10px;border-radius:999px;border:1px solid var(--line);color:var(--muted)}
+.pill.live{border-color:transparent;background:var(--hi);color:var(--on-hi)}
+.project h3{font-weight:800;font-variation-settings:"wdth" 108;font-size:clamp(26px,3.2vw,38px);line-height:1.05;margin-bottom:14px}
+.project .lede{color:var(--muted);margin-bottom:22px;max-width:52ch}
+.project ul{margin:0 0 22px;padding:0;list-style:none;display:grid;gap:12px}
+.project li{padding-left:22px;position:relative;max-width:58ch}
+.project li::before{content:"→";position:absolute;left:0;color:var(--pink);font-family:var(--mono)}
+.stack{display:flex;flex-wrap:wrap;gap:8px}
+.stack span{font-family:var(--mono);font-size:12.5px;padding:5px 10px;border-radius:6px;background:var(--surface);border:1px solid var(--line)}
+
+/* screenshot stack */
+.shots{margin:0;display:grid;gap:12px}
+.stage{position:relative;background:var(--tint-p);border-radius:20px;aspect-ratio:16/10.5;overflow:hidden}
+.win{position:absolute;display:block;padding:0;margin:0;background:var(--surface);border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:0 18px 50px rgba(10,12,30,.22);cursor:zoom-in;text-align:left;font:inherit;color:inherit;transition:transform .25s ease}
+.win:hover{transform:translateY(-4px)}
+.win .bar{display:flex;align-items:center;gap:10px;padding:7px 12px;background:var(--bg);border-bottom:1px solid var(--line);font-family:var(--mono);font-size:11px;color:var(--muted)}
+.win .bar .d{display:flex;gap:5px;flex:none}
+.win .bar .d i{width:8px;height:8px;border-radius:50%;background:var(--line)}
+.win .bar .d i:nth-child(1){background:#F26B5E}.win .bar .d i:nth-child(2){background:#F5BF4F}.win .bar .d i:nth-child(3){background:#5DC466}
+.win .url{flex:1;min-width:0;background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:2px 10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.win img{display:block;width:100%;height:auto}
+.w1{left:4%;top:5%;width:66%;z-index:1}
+.w2{right:4%;top:27%;width:58%;z-index:2}
+.w3{left:9%;bottom:5%;width:46%;z-index:3}
+.shots figcaption{font-family:var(--mono);font-size:12px;color:var(--muted)}
+@media (max-width:700px){
+  .stage{aspect-ratio:auto;display:grid;gap:14px;padding:14px}
+  .win{position:static;width:100%}
+}
+.lb{position:fixed;inset:0;z-index:20;background:rgba(8,9,12,.86);display:grid;place-items:center;gap:14px;padding:max(16px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));cursor:zoom-out}
+.lb img{max-width:min(1400px,100%);max-height:85vh;border-radius:10px}
+.lb button{font-family:var(--mono);font-size:14px;padding:10px 18px;border-radius:999px;border:1px solid #fff;background:transparent;color:#fff;cursor:pointer}
+
+/* toolkit */
+.kit{display:grid;border-top:1px solid var(--line)}
+.kit-row{display:grid;grid-template-columns:220px 1fr;gap:24px;padding-block:22px;border-bottom:1px solid var(--line);align-items:baseline}
+.kit-row > *{min-width:0}
+.kit-row .tags{display:flex;flex-wrap:wrap;gap:10px 22px;font-family:var(--display);font-variation-settings:"wdth" 108;font-weight:650;font-size:clamp(20px,2.4vw,28px);text-transform:uppercase;letter-spacing:.005em}
+.kit-row .tags.soft{font-family:var(--body);font-variation-settings:"wdth" 100;text-transform:none;font-weight:450;font-size:18px;color:var(--muted);gap:8px 18px}
+
+/* bento */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+.tile{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:22px;display:flex;flex-direction:column;justify-content:space-between;gap:20px;min-width:0}
+.tile h3{font-weight:750;font-variation-settings:"wdth" 104;font-size:21px;line-height:1.15}
+.t-half{grid-column:span 3}
+.c-blue{background:var(--accent);border-color:var(--accent);color:var(--bg)}
+.c-lime{background:var(--hi);border-color:var(--hi);color:var(--on-hi)}
+.c-blue .label,.c-lime .label{color:inherit;opacity:.75}
+.c-ta{background:var(--tint-a);border-color:transparent}
+.c-tb{background:var(--tint-b);border-color:transparent}
+.c-tp{background:var(--tint-p);border-color:transparent}
+.t-sm{grid-column:span 2}
+.t-comp{grid-column:span 6;display:grid;grid-template-columns:200px 1fr;gap:24px;align-items:start}
+.t-comp ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.t-comp li{border-left:1px solid var(--line);padding-left:14px}
+.t-comp li b{display:block;font-size:17px;line-height:1.25;margin-bottom:4px}
+
+/* git log */
+.log{font-family:var(--mono);font-size:14px;border:1px solid var(--line);border-radius:16px;background:var(--surface);padding:10px 0;overflow-x:auto}
+.commit{display:grid;grid-template-columns:44px 130px 1fr;gap:12px;padding:14px 22px 14px 16px;position:relative;min-width:520px}
+.commit .g{position:relative}
+.commit .g::before{content:"";position:absolute;left:13px;top:-14px;bottom:-14px;width:2px;background:var(--line)}
+.commit:first-child .g::before{top:12px}
+.commit:last-child .g::before{bottom:auto;height:26px}
+.commit .g::after{content:"";position:absolute;left:7px;top:5px;width:14px;height:14px;border-radius:50%;background:var(--surface);border:2px solid var(--accent)}
+.commit.head .g::after{background:var(--accent)}
+.commit .d{color:var(--muted)}
+.commit .msg{font-family:var(--body);font-size:16px;line-height:1.45}
+.commit .msg b{font-weight:650}
+.commit .msg small{display:block;color:var(--muted);font-size:14px}
+.ref{font-family:var(--mono);font-size:11.5px;padding:2px 7px;border-radius:5px;background:var(--hi);color:var(--on-hi);margin-right:6px;vertical-align:2px}
+.ref.b{background:transparent;border:1px solid var(--accent);color:var(--accent)}
+
+/* contact */
+.contact{padding-block:110px 40px}
+.contact h2{font-weight:900;font-variation-settings:"wdth" 125;text-transform:uppercase;font-size:clamp(46px,10vw,132px);letter-spacing:-.02em;line-height:.88;margin-bottom:36px}
+.contact h2 span{color:var(--accent)}
+.contact-sub{font-size:clamp(17px,2vw,21px);line-height:1.5;color:var(--muted);max-width:52ch;margin:-14px 0 32px}
+.mailbox{display:flex;flex-wrap:wrap;align-items:center;gap:14px;font-family:var(--mono);font-size:clamp(14px,2vw,18px)}
+.mailbox code{user-select:all;word-break:break-all;border-bottom:2px solid var(--pink);padding-bottom:2px}
+.links{display:flex;gap:22px;flex-wrap:wrap;margin-top:28px;font-family:var(--mono);font-size:14px}
+footer{border-top:1px solid var(--line);margin-top:80px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-block:22px;padding-bottom:max(22px,env(safe-area-inset-bottom,0px))}
+
+@media (max-width:860px){
+  .hero-grid,.p-text{grid-template-columns:1fr;gap:24px}
+  .kit-row{grid-template-columns:1fr;gap:10px}
+  .t-sm{grid-column:span 3}
+  .t-comp{grid-template-columns:1fr}
+  .t-comp ol{grid-template-columns:1fr}
+}
+@media (max-width:520px){
+  .t-sm,.t-half{grid-column:span 6}
+  .hero{padding-block:44px 32px;gap:28px}
+  section{padding-block:64px 0}
+  .sec-head{margin-bottom:24px}
+  .sec-head h2{font-size:clamp(28px,9.5vw,40px)}
+  .contact{padding-block:72px 32px}
+  .contact h2{font-size:clamp(32px,11vw,56px)}
+  .cta .btn{flex:1 1 auto;justify-content:center}
+  .term{padding:16px 18px;font-size:12.5px}
+  .project{padding-block:28px;gap:28px}
+  .stage{padding:10px;gap:10px;border-radius:16px}
+  .tile{padding:18px}
+  .kit-row{padding-block:18px}
+  /* git log: drop the sideways scroll, put the date above each entry */
+  .log{overflow:visible}
+  .commit{min-width:0;grid-template-columns:28px 1fr;grid-template-areas:"g d" "g msg";gap:2px 10px;padding:12px 16px 12px 8px}
+  .commit .g{grid-area:g}
+  .commit .d{grid-area:d;font-size:12.5px}
+  .commit .msg{grid-area:msg}
+  .commit .g::before{left:12px;top:-12px;bottom:-12px}
+  .commit .g::after{left:6px}
+  .commit:last-child .g::before{height:20px}
+  .lb img{max-height:75vh}
+}
+/* hover lift only where there is a real pointer, so taps don't leave cards stuck raised */
+@media (hover:none){ .win:hover,.btn:hover{transform:none} }
+@media (prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">Alliah<span>.</span>Montes</a>
+    <ul>
+      <li><a href="#work">Project</a></li>
+      <li><a href="#toolkit">Toolkit</a></li>
+      <li><a href="#credentials">Credentials</a></li>
+      <li><a href="#log">Log</a></li>
+      <li class="keep"><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="wrap hero" id="top">
+  <h1><span class="line"><span>Hey, I'm</span></span><span class="line"><span><mark>Alliah</mark>.</span></span></h1>
+  <div class="hero-grid">
+    <div>
+      <p class="intro">I'm <strong>Alliah Tricia Montes</strong>, a fourth-year Computer Science student at FEU Tech. I built and maintain the attendance and member-care system my church uses every Sunday, from the database and access rules to the screens people tap.</p>
+      <div class="cta">
+        <a class="btn primary" href="#work">See my project ↓</a>
+        <button class="btn" data-copy type="button">Copy email</button>
+      </div>
+    </div>
+    <div class="term" aria-label="Current status">
+      <div class="dots"><i></i><i></i><i></i></div>
+      <div><span class="p">alliah@feutech:~$</span> whoami</div>
+      <div>BSCS · Software Engineering · 4th year</div>
+      <div><span class="p">alliah@feutech:~$</span> status</div>
+      <div><span class="k">●</span> open to internships</div>
+      <div><span class="k">●</span> maintaining: Attendance &amp; Member-Care System</div>
+      <div><span class="p">alliah@feutech:~$</span> <span class="cursor"></span></div>
+    </div>
+  </div>
+</header>
+
+<div class="strip" aria-hidden="true">
+  <div class="track">
+    <span>Software Engineer</span><span>Full-Stack Developer</span><span>System Designer</span><span>Dean's Lister</span><span>SAP Certified</span><span>Graphic Designer</span><span>Church Tech Volunteer</span>
+  </div>
+</div>
+
+<main class="wrap">
+  <section id="work">
+    <div class="sec-head">
+      <h2>Current Project</h2>
+      <span class="label">2026</span>
+    </div>
+
+    <article class="project">
+      <div class="p-text">
+        <div>
+          <div class="meta"><span class="label">2026</span><span class="pill live">● In use every Sunday</span></div>
+          <h3>COG Harvest Attendance &amp; Member-Care System</h3>
+          <p class="lede">A check-in and follow-up app for ministry leaders and ushers at COG Harvest Church, Taytay, Rizal. It replaced paper sign-ins with a live directory and a dashboard that shows who needs a call this week.</p>
+        </div>
+        <div>
+          <ul>
+            <li>Real-time check-in, member directory, service scheduling, and an analytics dashboard for weekly and yearly trends, newcomer retention, and at-risk follow-ups.</li>
+            <li>Role-based access for Admin, Usher, and Leader, enforced with PostgreSQL Row-Level Security, plus a secure Edge Function for admin-only invites.</li>
+            <li>Heavy report math moved into SQL aggregate functions so the dashboard stays fast as attendance grows. Ships as an installable PWA on Vercel.</li>
+          </ul>
+          <div class="stack"><span>React 18</span><span>Vite</span><span>Supabase</span><span>PostgreSQL · RLS</span><span>Edge Functions</span><span>PWA</span><span>Vercel</span></div>
+        </div>
+      </div>
+      <figure class="shots">
+        <div class="stage">
+          <button class="win w1" type="button" data-src="shots/dashboard.webp" aria-label="Enlarge dashboard screenshot">
+            <div class="bar"><span class="d"><i></i><i></i><i></i></span><span class="url">COG Harvest · Dashboard</span></div>
+            <img src="shots/dashboard.webp" alt="Dashboard showing live attendance, last week's total, members needing care, and active members by age group" width="1920" height="869" loading="lazy" decoding="async">
+          </button>
+          <button class="win w2" type="button" data-src="shots/reports.webp" aria-label="Enlarge reports screenshot">
+            <div class="bar"><span class="d"><i></i><i></i><i></i></span><span class="url">COG Harvest · Reports</span></div>
+            <img src="shots/reports.webp" alt="Reports page with a weekly attendance trend for the last 12 Sundays and yearly attendance by month" width="1920" height="869" loading="lazy" decoding="async">
+          </button>
+          <button class="win w3" type="button" data-src="shots/services.webp" aria-label="Enlarge service summary screenshot">
+            <div class="bar"><span class="d"><i></i><i></i><i></i></span><span class="url">COG Harvest · Services</span></div>
+            <img src="shots/services.webp" alt="Late Morning service summary for September 27 with total attendance, newcomers, and attendance by age group" width="1920" height="869" loading="lazy" decoding="async">
+          </button>
+        </div>
+        <figcaption>Dashboard, Reports, and Service summary. Click a window to enlarge.</figcaption>
+      </figure>
+    </article>
+  </section>
+
+  <section id="toolkit">
+    <div class="sec-head"><h2>Toolkit</h2><span class="label">what I build with</span></div>
+    <div class="kit">
+      <div class="kit-row"><span class="label">Languages</span><div class="tags"><span>Python</span><span>Java</span><span>C++</span><span>PHP</span><span>HTML/CSS</span></div></div>
+      <div class="kit-row"><span class="label">Frontend</span><div class="tags"><span>React</span><span>Vite</span><span>PWA</span></div></div>
+      <div class="kit-row"><span class="label">Data &amp; backend</span><div class="tags"><span>SQL</span><span>PostgreSQL</span><span>Supabase</span><span>Firebase</span></div></div>
+      <div class="kit-row"><span class="label">Tools</span><div class="tags"><span>Git</span><span>Vercel</span><span>MS Office</span><span>Canva</span><span>Adobe Photoshop</span></div></div>
+      <div class="kit-row"><span class="label">How I work</span><div class="tags soft"><span>Teamwork</span><span>Communication</span><span>Project coordination</span><span>Adaptability</span><span>Problem-solving</span><span>Attention to detail</span><span>Time management</span></div></div>
+    </div>
+  </section>
+
+  <section id="credentials">
+    <div class="sec-head"><h2>Credentials</h2><span class="label">certs · honors · competitions</span></div>
+    <div class="bento">
+      <div class="tile t-half c-blue"><span class="label">July 2026</span><h3>SAP Certified Generative AI Developer</h3></div>
+      <div class="tile t-half c-lime"><span class="label">2024 · 2025 · 2026</span><h3>Dean's Lister, FEU Tech</h3></div>
+      <div class="tile t-sm c-ta"><span class="label">March 2026</span><h3>PMI Project Management Ready</h3></div>
+      <div class="tile t-sm c-tp"><span class="label">July 2025</span><h3>IT Specialist Certification in Python</h3></div>
+      <div class="tile t-sm c-ta"><span class="label">August 2024</span><h3>Cisco Linux Essentials</h3></div>
+      <div class="tile t-comp">
+        <div><span class="label">Competitions</span><h3 style="margin-top:10px">Where I've competed</h3></div>
+        <ol>
+          <li><b>Voice AI Hackathon</b><span class="label">March 2026</span></li>
+          <li><b>Git Guide: Code Quest</b><span class="label">July 2025</span></li>
+          <li><b>Trend University Capture the Flag</b><span class="label">July 2025</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section id="log">
+    <div class="sec-head"><h2>git log</h2><span class="label">education &amp; milestones, newest first</span></div>
+    <div class="log" role="list">
+      <div class="commit head" role="listitem"><div class="g"></div><div class="d">2023 – now</div><div class="msg"><span class="ref">HEAD → main</span><b>FEU Institute of Technology</b><small>BS Computer Science, Software Engineering · Sampaloc, Manila</small></div></div>
+      <div class="commit" role="listitem"><div class="g"></div><div class="d">2023 – 2026</div><div class="msg"><span class="ref b">org</span><b>FEU Tech ACM, Member</b><small>Association for Computing Machinery student chapter</small></div></div>
+      <div class="commit" role="listitem"><div class="g"></div><div class="d">2023</div><div class="msg"><b>Graduated With Highest Honor</b><small>Senior high school</small></div></div>
+      <div class="commit" role="listitem"><div class="g"></div><div class="d">2021 – 2023</div><div class="msg"><b>Juan Sumulong Memorial Junior College</b><small>Information and Communications Technology (ICT) strand · Taytay, Rizal</small></div></div>
+    </div>
+  </section>
+</main>
+
+<section class="wrap contact" id="contact">
+  <span class="label">Contact</span>
+  <h2 style="margin-top:14px">Let's work<br><span>together.</span></h2>
+  <p class="contact-sub">I'm looking for an internship. If you have a role, a project, or just a question, my inbox is open.</p>
+  <div class="mailbox"><code id="email">alliahtriciamontes2304@gmail.com</code><button class="btn" data-copy type="button">Copy</button></div>
+  <div class="links">
+    <a href="https://github.com/alliahmontes" target="_blank" rel="noopener">GitHub ↗</a>
+    <span class="label" style="align-self:center">Binangonan, Rizal · Philippines</span>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap"><span class="label">© <span id="yr">2026</span> Alliah Tricia Montes</span></div>
+</footer>
+
+<div class="lb" id="lb" hidden><img id="lbImg" alt=""><button id="lbClose" type="button">Close</button></div>
+
+<script>
+(function(){
+  var email = document.getElementById('email').textContent.trim();
+  function copy(btn){
+    var orig = btn.textContent;
+    function done(t){ btn.textContent = t; setTimeout(function(){ btn.textContent = orig; }, 1600); }
+    function fallback(){
+      var r = document.createRange(); r.selectNodeContents(document.getElementById('email'));
+      var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+      done('Selected, press Ctrl+C');
+    }
+    try {
+      navigator.clipboard.writeText(email).then(function(){ done('Copied'); }, fallback);
+    } catch(e){ fallback(); }
+  }
+  document.querySelectorAll('[data-copy]').forEach(function(b){ b.addEventListener('click', function(){ copy(b); }); });
+
+  var track = document.querySelector('.strip .track');
+  track.innerHTML += track.innerHTML;
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  var lb = document.getElementById('lb'), lbImg = document.getElementById('lbImg'), lastWin = null;
+  document.querySelector('.stage').addEventListener('click', function(e){
+    var w = e.target.closest('.win');
+    if (!w) return;
+    var img = w.querySelector('img');
+    lastWin = w;
+    lbImg.src = w.dataset.src; lbImg.alt = img.alt; lb.hidden = false;
+    document.getElementById('lbClose').focus();
+  });
+  function closeLb(){
+    if (lb.hidden) return;
+    lb.hidden = true;
+    if (lastWin) lastWin.focus();
+  }
+  lb.addEventListener('click', closeLb);
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLb(); });
+})();
+</script>
+
+</body>
+</html>
